@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sorry My Friends</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(120deg, #6a11cb, #2575fc);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 45px;
+      border-radius: 25px;
+      max-width: 550px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1.5s ease;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+      text-shadow: 0 3px 5px rgba(0,0,0,0.3);
+    }
+
+    h3 {
+      margin-top: 20px;
+      font-size: 20px;
+      opacity: 0.9;
+    }
+
+    p {
+      font-size: 19px;
+      line-height: 1.7;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 14px 28px;
+      background: #fff;
+      border: none;
+      border-radius: 35px;
+      font-size: 17px;
+      cursor: pointer;
+      color: #333;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      background: #f8f8f8;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      color: #ffb6fa;
+      font-size: 18px;
+      animation: floatUp 5s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100vh) scale(1.8); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>Sorry My Dear Friend</h1>
+    <h3>From: <strong>Faraz Ahmed</strong> <br> To: <strong>Vijay Kumar</strong></h3>
+
+    <p id="msg">
+      Vijay, I know I made a mistake…  
+      And I hurt you.  
+      I feel deeply sorry for what happened.  
+      <br><br>
+      You are not just a friend…  
+      <strong>You are like a brother to me.</strong>  
+      I never want to lose your friendship.
+    </p>
+
+    <button onclick="changeMessage()">Click for Special Message ❤️</button>
+  </div>
+
+  <script>
+    function changeMessage() {
+      document.getElementById("msg").innerHTML =
+        "Vijay, thank you for giving me another chance. 🙏<br><br>" +
+        "Our friendship means a lot to me, more than words can say.<br>" +
+        "<strong>I promise I will always respect you and stand by you.</strong><br><br>" +
+        "— Yours truly, Faraz Ahmed ❤️";
+    }
+
+    // Floating hearts animation
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.innerHTML = "❤️";
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 5000);
+    }, 500);
+  </script>
+
+</body>
+</html>
