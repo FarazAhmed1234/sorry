@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sorry My Friends</title>
-
   <style>
     body {
       margin: 0;
@@ -22,17 +21,17 @@
 
     .card {
       background: rgba(255, 255, 255, 0.15);
-      padding: 45px;
+      padding: 50px;
       border-radius: 25px;
-      max-width: 550px;
+      max-width: 600px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.25);
       backdrop-filter: blur(10px);
-      animation: fadeIn 1.5s ease;
       border: 2px solid rgba(255,255,255,0.2);
+      animation: fadeIn 1.5s ease;
     }
 
     h1 {
-      font-size: 42px;
+      font-size: 44px;
       margin-bottom: 15px;
       text-shadow: 0 3px 5px rgba(0,0,0,0.3);
     }
@@ -46,6 +45,7 @@
     p {
       font-size: 19px;
       line-height: 1.7;
+      min-height: 100px;
     }
 
     button {
@@ -88,33 +88,43 @@
     }
   </style>
 </head>
-
 <body>
 
   <div class="card">
     <h1>Sorry My Dear Friend</h1>
     <h3>From: <strong>Faraz Ahmed</strong> <br> To: <strong>Vijay Kumar</strong></h3>
 
-    <p id="msg">
-      Vijay, I know I made a mistake…  
-      And I hurt you.  
-      I feel deeply sorry for what happened.  
-      <br><br>
-      You are not just a friend…  
-      <strong>You are like a brother to me.</strong>  
-      I never want to lose your friendship.
-    </p>
+    <p id="msg">Vijay, I know I made a mistake… And I hurt you. I feel deeply sorry for what happened. <br><br><strong>You are not just a friend… You are like a brother to me.</strong> I never want to lose your friendship.</p>
 
-    <button onclick="changeMessage()">Click for Special Message ❤️</button>
+    <button onclick="showNextMessage()">Click for Special Message ❤️</button>
   </div>
 
   <script>
-    function changeMessage() {
-      document.getElementById("msg").innerHTML =
-        "Vijay, thank you for giving me another chance. 🙏<br><br>" +
-        "Our friendship means a lot to me, more than words can say.<br>" +
-        "<strong>I promise I will always respect you and stand by you.</strong><br><br>" +
-        "— Yours truly, Faraz Ahmed ❤️";
+    const messages = [
+      "Vijay, thank you for giving me another chance. 🙏 Your friendship is one of the best parts of my life. ❤️<strong>I promise I will always respect you and stand by you.</strong> — Faraz Ahmed",
+      "I really appreciate having you as my friend, Vijay. 💛Friends like you are rare, and I will cherish our bond forever. — Faraz Ahmed",
+      "Vijay, you mean a lot to me. I hope we can laugh, share, and create memories again soon. 🌟Your friend always, Faraz Ahmed"
+    ];
+
+    let messageIndex = 0;
+
+    function showNextMessage() {
+      const msgElement = document.getElementById("msg");
+      typeEffect(msgElement, messages[messageIndex]);
+      messageIndex = (messageIndex + 1) % messages.length;
+    }
+
+    // Typing effect
+    function typeEffect(element, text, i = 0) {
+      element.innerHTML = "";
+      function typing() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typing, 30);
+        }
+      }
+      typing();
     }
 
     // Floating hearts animation
@@ -125,7 +135,6 @@
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.fontSize = (Math.random() * 20 + 15) + "px";
       document.body.appendChild(heart);
-
       setTimeout(() => heart.remove(), 5000);
     }, 500);
   </script>
